@@ -14,9 +14,10 @@ class NiveauController extends Controller
    use JoinQueryParams;
    public function index(Request $request)
    {
+
      if (array_key_exists('join',$request->all())) {
         if (method_exists(Niveau::class,$request->input('join'))) {
-            return NiveauRessource::collection(Niveau::with($request->input('join'))->get());
+            return $this->getClasseByLevel($request->input('join'));
         }
         else
         {
@@ -35,7 +36,7 @@ class NiveauController extends Controller
    }
    public function find(Niveau $niveau)
    {
-    //    return $niveau->load('classes');
+        return $niveau->load('classes');
    }
 
 

@@ -14,5 +14,9 @@ class Classe extends Model
     protected $fillable = [
         'libelle',
     ];
-   
+    public function eleves()
+    {
+        return $this->belongsToMany(Eleve::class, 'inscriptions', 'classe_id', 'eleve_id');
+    }
+
 }

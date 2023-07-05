@@ -21,4 +21,5 @@ class Niveau extends Model
         return $this->hasMany(Classe::class);
 
     }
+
 }
