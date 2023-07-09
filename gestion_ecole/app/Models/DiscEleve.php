@@ -30,4 +30,11 @@ class DiscEleve extends Model
     {
         return $this->belongsTo(Evaluation::class);
     }
+    public function semestre()
+    {
+        return $this->belongsTo(Semestre::class);
+    }
+    protected $hidden = [
+        'updated_at','created_at'
+    ];
 }

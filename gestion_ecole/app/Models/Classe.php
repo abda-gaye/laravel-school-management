@@ -18,5 +18,7 @@ class Classe extends Model
     {
         return $this->belongsToMany(Eleve::class, 'inscriptions', 'classe_id', 'eleve_id');
     }
-
+    protected $hidden = [
+        'updated_at','created_at'
+    ];
 }

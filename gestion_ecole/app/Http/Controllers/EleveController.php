@@ -22,7 +22,7 @@ class EleveController extends Controller
      */
     public function index()
     {
-        $registerStudent = Inscription::with(['anneeScolaire', 'classe','eleve'])->get();
+        $registerStudent = Inscription::with(['anneeScolaire', 'classe','eleve'])->get()->orderBy('prenom');
         return $registerStudent;
 
     }
@@ -120,5 +120,12 @@ class EleveController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function sortie(Request $request)
+    {
+        return Eleve::whereIn('id', $request->all())->update(["state"=>1]);
+
+
     }
 }
