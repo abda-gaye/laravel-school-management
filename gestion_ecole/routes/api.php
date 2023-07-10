@@ -4,6 +4,7 @@ use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\DisciplineController;
 use App\Http\Controllers\EleveController;
 use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\NiveauController;
 use App\Http\Controllers\NoteController;
@@ -42,3 +43,5 @@ Route::apiResource('/classes/{idClasse}/disciplines/{idDisc}/evaluation/{idEval}
 Route::get("classes/{idclasse}/discipline/{iddiscipline}/notes",[ClasseController::class,'getDisciplineNotes']);
 Route::get("classes/{idclasse}/notes",[ClasseController::class,'getAllNotesOfClass']);
 Route::get("classes/{idClasse}/notes/eleves/{eleveId}",[ClasseController::class,'getNoteOfEleveInClass']);
+Route::apiResource('/evenements',EvenementController::class)->only(['store','index']);
+Route::post('/evenements/{evenementId}/participations',[EvenementController::class,'sendEmailsToParticipants']);
